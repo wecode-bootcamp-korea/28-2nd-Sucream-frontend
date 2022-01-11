@@ -1,4 +1,4 @@
-## Gamsung 프로젝트 Front-end/Back-end 소개
+## 프로젝트 Front-end/Back-end 소개
 
 - 신발 경매 사이트 크림 https://kream.co.kr 클론
 - 짧은 프로젝트 기간동안 개발에 집중해야 하므로 디자인/기획 부분을 참고하여 클론했습니다.
