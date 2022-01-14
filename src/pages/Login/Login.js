@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import qs from 'qs';
 import { restApiKey } from '../../config';
@@ -59,109 +59,113 @@ const Login = () => {
   });
 
   return (
-    <LoginStyle>
-      <div className="LoginWrap">
-        <h2 className="loginTitle">
-          <span>Sucream</span>
-          <p>KICKS RULE EVERYTHING AROUND ME</p>
-        </h2>
-        <div className="loginForm">
-          <div className="hasButton">
-            <h3 className="inputTitle">이메일 주소</h3>
-            <input type="email" placeholder="예) sucream@korean.com" />
-            <h3 className="inputTitle">비밀번호</h3>
-            <input type="password" />
-          </div>
-          <div className="loginBtnSection">
-            <button className="loginBtn">로그인</button>
-            <button className="loginKakao">
-              <a href={kakaoAuthUrl}>
-                <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_large_wide.png" />
-              </a>
-            </button>
-          </div>
-        </div>
-      </div>
-    </LoginStyle>
+    <LoginWrap>
+      <LoginTitle>
+        <LogoTitle>Sucream</LogoTitle>
+        <SubLogo>KICKS RULE EVERYTHING AROUND ME</SubLogo>
+      </LoginTitle>
+
+      <LoginForm>
+        <LoginInputWrapper>
+          <InputTitle>이메일 주소</InputTitle>
+          <LoginInput type="email" placeholder="예) sucream@korean.com" />
+          <InputTitle>비밀번호</InputTitle>
+          <LoginInput type="password" />
+        </LoginInputWrapper>
+
+        <LoginBtnSection>
+          <LoginBtn>로그인</LoginBtn>
+          <LoginKakaoBtn>
+            <KakaoLink href={kakaoAuthUrl}>
+              <KakaoBtnImg src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_large_wide.png" />
+            </KakaoLink>
+          </LoginKakaoBtn>
+        </LoginBtnSection>
+      </LoginForm>
+    </LoginWrap>
   );
 };
 
 export default Login;
 
-const LoginStyle = styled.div`
-  .LoginWrap {
-    height: 80vh;
-    margin: 0 auto;
-    padding: 160px;
-  }
-
-  .loginTitle {
-    margin-bottom: 20px;
-    text-align: center;
-    span {
-      width: 100%;
-      margin: 0 auto;
-      padding-top: 5.5px;
-      padding-left: 5px;
-      padding-right: 12px;
-      background-color: #ee2c29;
-      font-size: 4em;
-      font-weight: 900;
-      font-style: italic;
-      color: #ffffff;
-    }
-    p {
-      margin-top: 20px;
-      font-weight: 600;
-      font-size: 12px;
-    }
-  }
-
-  .loginForm {
-    width: 400px;
-    margin: 0 auto;
-  }
-
-  .hasButton {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    input {
-      height: 30px;
-      width: 400px;
-      border-bottom: 1px solid ${props => props.theme.text};
-    }
-    h3 {
-      font-weight: 500;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-  }
-
-  .loginBtnSection {
-    text-align: center;
-    margin-bottom: 20px;
-
-    button {
-      :hover {
-        cursor: pointer;
-      }
-      display: block;
-      height: 60px;
-      width: 400px;
-    }
-    .loginBtn {
-      margin-bottom: 10px;
-      border-radius: 10px;
-      background-color: #ebebeb;
-      font-size: 20px;
-      color: ${props => props.theme.white};
-    }
-
-    .loginKakao {
-      border-radius: 10px;
-      background-color: #f9e100;
-      color: ${props => props.theme.black};
-      font-weight: 700;
-    }
-  }
+const LoginWrap = styled.section`
+  height: 80vh;
+  margin: 0 auto;
+  padding: 160px;
 `;
+
+const LoginTitle = styled.h1`
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+const LogoTitle = styled.span`
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 5.5px;
+  padding-left: 5px;
+  padding-right: 12px;
+  background-color: #ee2c29;
+  font-size: 4em;
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+`;
+
+const SubLogo = styled.p`
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 12px;
+`;
+
+const LoginForm = styled.div`
+  width: 400px;
+  margin: 0 auto;
+`;
+
+const LoginInputWrapper = styled.div`
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
+
+const InputTitle = styled.h3`
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`;
+
+const LoginInput = styled.input`
+  height: 30px;
+  width: 400px;
+  border-bottom: 1px solid ${props => props.theme.text};
+`;
+
+const LoginBtnSection = styled.div`
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+const LoginBtn = styled.button`
+  :hover {
+    cursor: pointer;
+  }
+  display: block;
+  height: 60px;
+  width: 400px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #ebebeb;
+  font-size: 20px;
+  color: ${props => props.theme.white};
+`;
+
+const LoginKakaoBtn = styled.button`
+  border-radius: 10px;
+  background-color: #f9e100;
+  color: ${props => props.theme.black};
+  font-weight: 700;
+`;
+
+const KakaoLink = styled.a``;
+
+const KakaoBtnImg = styled.img``;
