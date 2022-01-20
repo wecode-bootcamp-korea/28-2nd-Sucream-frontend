@@ -7,10 +7,10 @@ import ProductTrade from '../ProductContent/ProductTrade/ProductTrade';
 
 const ProductNav = () => {
   const { productData, productError } = useProductDetail();
-  const { image_urls, brand, name, korean_name } = productData.result;
-
   if (productError) return <div>failed to load</div>;
   if (!productData) return <Loading />;
+
+  const { image_urls, brand, name, korean_name } = productData.result;
 
   return (
     <ProductNavContainer>
