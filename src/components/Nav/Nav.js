@@ -19,15 +19,16 @@ const Nav = () => {
   };
 
   useEffect(() => {
-    token &&
-      fetch('http://10.58.5.73:8000/users/point', {
-        method: 'GET',
-        headers: { Authorization: token },
-      })
-        .then(res => res.json())
-        .then(result => {
-          setPoints(result.result);
-        });
+    console.log('token', token);
+    // token &&
+    //   fetch('http://10.58.5.73:8000/users/point', {
+    //     method: 'GET',
+    //     headers: { Authorization: token },
+    //   })
+    //     .then(res => res.json())
+    //     .then(result => {
+    //       setPoints(result.result);
+    //     });
   }, [token]);
 
   return (
