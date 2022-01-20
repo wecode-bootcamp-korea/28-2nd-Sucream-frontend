@@ -7,7 +7,6 @@ const useSizeQuote = () => {
   const params = useParams();
   const { data: quoteData, error: quoteError } = useSWR(
     `http://10.58.5.73:8000/products/${params.id}/graph`,
-    // `http://localhost:3000/data/productQuote.json`,
     fetcher
   );
 

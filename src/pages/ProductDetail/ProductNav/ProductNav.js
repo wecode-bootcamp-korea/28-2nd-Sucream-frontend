@@ -49,9 +49,10 @@ const ProductNavContainer = styled.div`
   position: fixed;
   width: 100%;
   height: 100px;
-  margin-top: 80px;
+  margin-top: 40px;
   padding: 15px 5%;
   background-color: #fff;
+  border-bottom: 1px solid #ddd;
   z-index: 10;
   animation: ${productNavDrop} 0.3s;
 `;

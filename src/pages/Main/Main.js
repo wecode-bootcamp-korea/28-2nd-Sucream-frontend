@@ -88,11 +88,12 @@ const Main = () => {
 
 const Container = styled.div`
   margin-bottom: 120px;
+  padding-top: 80px;
   background-color: #ffffff;
 `;
 
 const ShopTitle = styled.div`
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 const ShopStyle = styled.h2`

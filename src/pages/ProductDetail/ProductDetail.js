@@ -24,7 +24,7 @@ const ProductDetail = () => {
 
 const ProductMain = styled.main`
   display: flex;
-  margin: 80px 15%;
+  margin: 0px 15%;
   padding: 20px;
 `;
 
