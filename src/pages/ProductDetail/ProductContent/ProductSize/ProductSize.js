@@ -3,16 +3,23 @@ import { useRecoilState } from 'recoil';
 import { IoCaretDownCircleOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 import { sizeState } from '../../../../atom/atom';
+import useSizeQuote from '../../../../hooks/useQuote';
 import ProductModal from '../../ProductModal/ProductModal';
 
 const ProductSize = () => {
   const [isModal, setIsModal] = useState(false);
   const [selectSize] = useRecoilState(sizeState);
+  const { quoteData } = useSizeQuote();
 
+  const sizeCheck = quoteData === undefined;
   return (
     <Size>
       <SizeTitle>사이즈</SizeTitle>
-      <SizeBtn type="button" onClick={() => setIsModal(true)}>
+      <SizeBtn
+        type="button"
+        onClick={() => setIsModal(true)}
+        disabled={sizeCheck}
+      >
         {selectSize.size || '모든 사이즈'}
         <i>
           <IoCaretDownCircleOutline />

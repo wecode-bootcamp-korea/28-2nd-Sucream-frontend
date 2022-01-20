@@ -4,42 +4,46 @@ import styled from 'styled-components';
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import { sizeState } from '../../../../atom/atom';
 import useQuote from '../../../../hooks/useQuote';
+import useProductDetail from '../../../../hooks/useProductDetail';
 import useSizeData from '../../../../hooks/useSizeData';
 import Loading from '../../../../components/Loading/Loading';
 
 const RecentPrice = () => {
   const { quoteData, quoteError } = useQuote();
+  const { productData, productError } = useProductDetail();
   const { sizeData, sizeError } = useSizeData();
   const [selectSize] = useRecoilState(sizeState);
 
-  if (quoteError || sizeError) return <div>failed to load</div>;
-  if (!quoteData || !sizeData) return <Loading />;
+  if (quoteError || sizeError || productError) return <div>failed to load</div>;
+  if (!quoteData || !sizeData || !productData) return <Loading />;
 
-  const selectSizeInit = selectSize.size || 230;
+  const quotePrice = quoteData.result[0]?.price || 0;
+  const recentPrice = selectSize.size === '' ? quotePrice : selectSize.size;
 
-  const sizePrice = sizeData.result.buy.filter(
-    item => item.size === selectSizeInit
-  );
-  const quotePrice = quoteData.result[0]?.price;
-  const recentPrice = selectSize.size === '' ? quotePrice : selectSize.price;
-  const selectPrice = sizePrice[0]?.price || recentPrice;
+  const recentQuote =
+    quoteData.result.filter(item => item.size === selectSize.size)[0]?.price ||
+    productData.result.retail_price;
 
   const differencePrice =
     quoteData.result.filter(quoteSize => quoteSize.size === selectSize.size)[0]
       ?.price || recentPrice;
 
-  const differenceCheck = differencePrice < selectPrice;
-  const priceDifference = Math.abs(differencePrice - selectPrice);
+  const differenceCheck = differencePrice > productData.result.retail_price;
+  const priceDifference = Math.abs(
+    differencePrice - productData.result.retail_price
+  );
   const pricePercent = (priceDifference / differencePrice) * 100;
   return (
     <Recentprice>
       <PriceTitle>최근 거래가</PriceTitle>
       <div>
-        <Price>{`${recentPrice.toLocaleString() || '-'} 원`}</Price>
+        <Price>{`${quotePrice ? recentQuote.toLocaleString() : '-'} 원`}</Price>
         <PriceTextWrap difference={differenceCheck}>
           <i>{differenceCheck ? <AiFillCaretUp /> : <AiFillCaretDown />}</i>
-          <span>{`${priceDifference.toLocaleString()} 원`}</span>
-          <span>{` (${pricePercent.toFixed(2)} %)`}</span>
+          <span>{`${
+            quotePrice ? priceDifference.toLocaleString() : '-'
+          } 원`}</span>
+          <span>{` (${quotePrice ? pricePercent.toFixed(2) : 0} %)`}</span>
         </PriceTextWrap>
       </div>
     </Recentprice>

@@ -50,16 +50,16 @@ const SORT_BTNS = [
     id: 2,
     name: '즉시구매순',
     conditions: [
-      { key: 'order', value: 'high_price' },
-      { key: 'is_buyer', value: '0' },
+      { key: 'order', value: 'low_price' },
+      { key: 'is_buyer', value: '1' },
     ],
   },
   {
     id: 3,
     name: '즉시판매순',
     conditions: [
-      { key: 'order', value: 'low_price' },
-      { key: 'is_buyer', value: '1' },
+      { key: 'order', value: 'hight_price' },
+      { key: 'is_buyer', value: '0' },
     ],
   },
 ];

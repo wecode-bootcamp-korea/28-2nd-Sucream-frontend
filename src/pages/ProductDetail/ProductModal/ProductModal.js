@@ -113,7 +113,8 @@ const ProductModal = ({ setIsModal, typeText, type }) => {
             <ModalItemStyle type="button" onClick={allBtnControll}>
               <p>모든 사이즈</p>
               <ModalPrice>
-                {quoteData.result[0].price.toLocaleString()}
+                {quoteData.result[0]?.price.toLocaleString() ||
+                  productData.result.retail_price}
               </ModalPrice>
             </ModalItemStyle>
           )}
