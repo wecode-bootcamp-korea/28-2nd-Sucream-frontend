@@ -32,7 +32,7 @@ const Nav = () => {
 
   return (
     <NavUl>
-      <NavLi>{token && '포인트: ' + points}</NavLi>
+      <NavLi>{token && '포인트: ' + points.toLocaleString() + ' 원'}</NavLi>
       <NavLi>고객센터</NavLi>
       <NavLi>관심상품</NavLi>
       <NavLi>마이페이지</NavLi>
@@ -53,10 +53,11 @@ const NavUl = styled.ul`
   height: 40px;
   width: 100%;
   margin-bottom: 20px;
-  border-bottom: 1px solid ${props => props.theme.text};
+  border-bottom: 1px solid #ddd;
   color: ${props => props.theme.text};
   background-color: white;
   font-size: 15px;
+  z-index: 20;
 `;
 
 const NavLi = styled.li`

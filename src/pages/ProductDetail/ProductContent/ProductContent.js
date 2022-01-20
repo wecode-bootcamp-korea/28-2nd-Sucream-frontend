@@ -30,6 +30,7 @@ const Content = styled.section`
   position: relative;
   width: 50%;
   padding-left: 40px;
+  margin-top: 50px;
   border-left: 1px solid #dddddd;
 `;
 
